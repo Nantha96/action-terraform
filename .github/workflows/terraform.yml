@@ -69,10 +69,9 @@ jobs:
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
       id: terraform
-      uses: hashicorp/setup-terraform@master
+      uses: hashicorp/setup-terraform@v1
       with:
         terraform_wrapper: false
-        tf_actions_subcommand: 'output'
     # Configure AWS Credentials
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
