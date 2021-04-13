@@ -105,7 +105,7 @@ jobs:
     - name: Terrafrom Output
       run: |
         instanceid=$(terraform output DNS)
-        echo ${{ steps.terraform.outputs.tf_actions_output  }}
+        echo ${{ steps.terraform_apply.outputs.dns  }}
       
      
       # Destroy Everything
