@@ -11,7 +11,7 @@ terraform {
 resource "aws_instance" "myInstance" {
   ami           = "ami-05d72852800cbf29e"
   instance_type = "t2.micro"
-  iam_instance_profile = "${aws_iam_instance_profile.ssm_profie.name}"
+  iam_instance_profile = aws_iam_instance_profile.ssm_profie.name
   key_name = "deployer-two"
   user_data = <<-EOF
 			  #! /bin/bash
