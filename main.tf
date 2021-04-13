@@ -9,7 +9,7 @@ terraform {
 }
 
 resource "aws_instance" "myInstance" {
-  ami           = "ami-081c76abbbdaaafc7"
+  ami           = "ami-05d72852800cbf29e"
   instance_type = "t2.micro"
   key_name = "deployer-two"
   user_data = <<-EOF
