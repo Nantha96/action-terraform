@@ -69,6 +69,8 @@ jobs:
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_wrapper: false
       
     # Configure AWS Credentials
     - name: Configure AWS credentials
@@ -95,7 +97,12 @@ jobs:
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve
+      
+    - name: Terrafrom Output
+      run: |
+        rgname=$(terraform output DNS)
+        echo rgname
       # Destroy Everything
-    - name: Terraform Destroy
-      run: terraform destroy -auto-approve
+    #- name: Terraform Destroy
+    #  run: terraform destroy -auto-approve
       
