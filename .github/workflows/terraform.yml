@@ -99,11 +99,13 @@ jobs:
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: | 
         terraform apply -auto-approve
-        dns = $(terraform output DNS)
+        dns=$(terraform output DNS)
         echo "::set-output name=dns::$dns"
       
     - name: Terrafrom Output
-      run: echo ${{ steps.terraform.outputs.tf_actions_output  }}
+      run: |
+        instanceid=$(terraform output DNS)
+        echo ${{ steps.terraform.outputs.tf_actions_output  }}
       
      
       # Destroy Everything
