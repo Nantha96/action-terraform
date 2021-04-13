@@ -1,3 +1,13 @@
+terraform {
+  backend "s3" {
+    bucket         = "nanthabuckettwo"
+    key            = "terraform.tfstate"
+    region         = "us-east-2"
+    dynamodb_table = "terraform-db-2"
+    encrypt        = true
+  }
+}
+
 resource "aws_instance" "myInstance" {
   ami           = "ami-0a54aef4ef3b5f881"
   instance_type = "t2.micro"
@@ -16,14 +26,6 @@ provider "aws" {
   region  = "us-east-2"
 }
 
-resource "aws_security_group_rule" "myInstance" {
-  type              = "ingress"
-  from_port         = 0
-  to_port           = 65535
-  protocol          = "all"
-  cidr_blocks 		= ["0.0.0.0/0"]
-  security_group_id = "sg-0bbe10ba0129ef5d6"
-}
 
 module "key_pair" {
 
