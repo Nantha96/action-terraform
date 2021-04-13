@@ -30,13 +30,13 @@ provider "aws" {
 resource "aws_iam_role" "test_role" {
   name = "test_role"
 
-assume_role_policy = jsonencode({
+ policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
       {
-        Action   = ["ec2:Describe*"]
+        Action   = ["s3:ListAllMyBuckets", "s3:ListBucket", "s3:HeadBucket"]
         Effect   = "Allow"
-        resources = [ "*" ]
+        Resource = "*"
       },
     ]
   })
