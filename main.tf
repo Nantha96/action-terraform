@@ -36,7 +36,7 @@ assume_role_policy = jsonencode({
       {
         Action   = ["ec2:Describe*"]
         Effect   = "Allow"
-        Resource = "*"
+        resources = [ "*" ]
       },
     ]
   })
