@@ -103,23 +103,7 @@ jobs:
         rgname=$(terraform output DNS)
         echo $rgname
       
-      # Configure aws-ssm to run the scripts from Actions
-    - name: AWS SSM Send-Command
-      uses: peterkimzz/aws-ssm-send-command@master
-      id: ssm
-      with:
-        aws-region: us-east-2
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        instance-ids: i-09dafad85491eff6b
-
-        working-directory: /home/ubuntu
-        command: ls -al
-        comment: Hello world!
-
-      # Catch SSM outputs
-    - name: Get the outputs
-      run: echo "The Command id is ${{ steps.ssm.outputs.command-id }}"
+     
       # Destroy Everything
     - name: Terraform Destroy
       run: terraform destroy -auto-approve
