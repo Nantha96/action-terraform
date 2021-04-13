@@ -68,6 +68,7 @@ jobs:
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
+      id: terraform
       uses: hashicorp/setup-terraform@v1
       with:
         terraform_wrapper: false
@@ -95,16 +96,17 @@ jobs:
       # On push to main, build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
+      id: terraform_apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve
       
     - name: Terrafrom Output
       run: |
-        rgname=$(terraform output DNS)
+        rgname= ${{ steps.terraform.output.DNS }}
         echo $rgname
       
      
       # Destroy Everything
-    - name: Terraform Destroy
-      run: terraform destroy -auto-approve
+    #- name: Terraform Destroy
+    #  run: terraform destroy -auto-approve
       
