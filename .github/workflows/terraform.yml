@@ -72,7 +72,7 @@ jobs:
       uses: hashicorp/setup-terraform@v1
       with:
         terraform_wrapper: false
-      
+        tf_actions_subcommand: 'output'
     # Configure AWS Credentials
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -101,9 +101,7 @@ jobs:
       run: terraform apply -auto-approve
       
     - name: Terrafrom Output
-      run: |
-        rgname= ${{ steps.terraform.output.DNS }}
-        echo $rgname
+      run: echo ${{ steps.terraform.outputs.tf_actions_output  }}
       
      
       # Destroy Everything
