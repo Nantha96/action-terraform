@@ -101,7 +101,7 @@ jobs:
     - name: Terrafrom Output
       run: |
         rgname=$(terraform output DNS)
-        echo rgname
+        echo $rgname
       # Destroy Everything
     #- name: Terraform Destroy
     #  run: terraform destroy -auto-approve
