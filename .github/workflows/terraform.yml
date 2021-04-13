@@ -100,7 +100,7 @@ jobs:
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: | 
         terraform apply -auto-approve
-        $dns = $(terraform output DNS)
+        dns = $(terraform output DNS)
         echo "::set-output name=dns::$dns"
       
     - name: Terrafrom Output
