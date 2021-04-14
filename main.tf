@@ -127,5 +127,5 @@ output "DNS" {
 }
 
 output "state" {
-  value = locals.service_name
+  value = local.service_name
 }
