@@ -118,7 +118,7 @@ module "key_pair" {
 }
 
 locals {
-  service_name = "forum"
+  service_name = aws_instance.myInstance.public_dns
   owner        = "Community Team"
 }
 
