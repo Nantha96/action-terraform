@@ -117,11 +117,15 @@ module "key_pair" {
 
 }
 
+locals {
+  service_name = "forum"
+  owner        = "Community Team"
+}
 
 output "DNS" {
   value = aws_instance.myInstance.public_dns
 }
 
 output "state" {
-  value = 1
+  value = locals.service_name
 }
