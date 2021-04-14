@@ -127,5 +127,5 @@ output "DNS" {
 }
 
 output "state" {
-  value = local.service_name
+  value = aws_instance.myInstance.instance_state
 }
