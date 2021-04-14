@@ -112,6 +112,6 @@ jobs:
         aws s3 ls
      
       # Destroy Everything
-    #- name: Terraform Destroy
-    #  run: terraform destroy -auto-approve
+    - name: Terraform Destroy
+      run: terraform destroy -auto-approve
       
